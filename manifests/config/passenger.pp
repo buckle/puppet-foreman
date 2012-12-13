@@ -6,7 +6,7 @@ class foreman::config::passenger {
     path    => "${foreman::apache_conf_dir}/foreman.conf",
     content => template('foreman/foreman-vhost.conf.erb'),
     mode    => '0644',
-    notify  => Exec['reload-apache'],
+    notify  => Exec['apache-graceful'],
     require => Class['foreman::install'],
   }
 
